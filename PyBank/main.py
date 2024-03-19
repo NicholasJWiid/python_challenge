@@ -2,11 +2,11 @@
 import os
 import csv
 
-#  Set csv path, open csv file, skip header row, and save data in a list
+#  Set csv path, open csv file, skip and save header row, and save data in a list
 csvpath = os.path.join('.', 'Resources', 'budget_data.csv')
 with open(csvpath, 'r') as csvfile:
     budget_csv = csv.reader(csvfile, delimiter=',')
-    next(budget_csv, None)
+    csv_header = next(budget_csv, None)
     budget_data = [item for item in budget_csv]
 
 # Set initial variable values
@@ -47,6 +47,7 @@ pnl_average = round(total_change/change_counter,2)
 # Save results to a variable in the correct print format
 results = f'\nFinancial Analysis\n\n----------------------------\n\nTotal Months: {month_count}\n\nTotal: ${net_total}\n\nAverage Change: ${pnl_average}\n\nGreatest Increase in Profits: {date_incr} (${greatest_incr})\n\nGreatest Decrease in Profits: {date_decr} (${greatest_decr})\n'
 
+# Print results to the terminal
 print(results)
 
 # Write results to txt file

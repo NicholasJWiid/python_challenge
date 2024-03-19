@@ -2,11 +2,11 @@
 import os
 import csv
 
-#  Set csv path, open csv file, skip header row, and save data in a list
+#  Set csv path, open csv file, skip and save header row, and save data in a list
 csvpath = os.path.join(".", "Resources", "election_data.csv")
 with open(csvpath, 'r') as csvfile:
     election_csv = csv.reader(csvfile, delimiter=',')
-    next(election_csv, None)
+    csv_header = next(election_csv, None)
     election_data = [item for item in election_csv]
 
 # Calculate total number of votes counted
@@ -34,6 +34,8 @@ for candidate in candidate_list:
 
 # Save results to a variable in the correct print format, looping through dictionary values
 results = f'\nElection Results\n\n----------------------------\n\n'f'Total Votes: {total_votes}\n\n----------------------------\n\n' + '\n'.join([f"{key}: {value/total_votes*100:0.3f}% ({value})\n"for key, value in votes_won.items()]) + f'\n\n----------------------------\n\nWinner: {winner}\n'
+
+# Print results to the terminal
 print(results)
 
 # Write results to txt file
