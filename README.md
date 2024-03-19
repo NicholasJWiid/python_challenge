@@ -2,7 +2,7 @@
 
 The python challenge contains two parts.
 
-1. PyBank:
+1. PyBank: <br>
    TASK: Create a Python script to analyze the financial records of a company, using the financial dataset budget_data.csv. The dataset is composed of two columns: "Date" and "Profit/Losses". The script should calculate each of the following values:
 
 * The total number of months included in the dataset
